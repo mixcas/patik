@@ -48,6 +48,8 @@ form.add-drop input {
 
 .drops-container {
   padding: 50px 0;
+  max-width: 500px;
+  margin: 0 auto;
 }
 .drop {
   text-align: center;
