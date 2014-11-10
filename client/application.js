@@ -4,6 +4,7 @@ Session.setDefault('loc', [0,0]);
 
 // Statup function
 Meteor.startup(function () {
+  navigator.geolocation.getCurrentPosition(saveLocation);
 });
 
 // Add new drop
@@ -35,19 +36,19 @@ Template.newDrop.events({
 // Get all drops
 Template.allDrops.helpers({
   drops: function() {
-    navigator.geolocation.getCurrentPosition(saveLocation);
-    return Drops.find({
-      loc: {
-        $near: {
-          $geometry: { type: "Point",  coordinates: Session.get('loc') }
+    var loc = Session.get('loc');
+    if( 0 != loc[0] && 0 != loc[1] ) {
+      navigator.geolocation.getCurrentPosition(saveLocation);
+      return Drops.find({
+        loc: {
+          $near: {
+            $geometry: { type: "Point",  coordinates: Session.get('loc') }
+          }
         }
-      }
-    }, {
-      limit: 5,
-      sort: {
-        date: -1
-      }
-    });
+      }, {
+        limit: 5,
+      });
+    }
    }
 });
 
