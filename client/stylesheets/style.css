@@ -1,7 +1,4 @@
 /* CSS declarations go here */
-body {
-  padding-top: 50px;
-}
 header {
   background: #68787A;
   text-align: center;
@@ -43,10 +40,15 @@ form.add-drop:before {
 }
 
 form.add-drop input {
+  width: 100%;
+  height: 100%;
   z-index: 1;
   opacity: 0;
 }
 
+.drops-container {
+  padding: 50px 0;
+}
 .drop {
   text-align: center;
   border: 1px solid #E6FFFA;
