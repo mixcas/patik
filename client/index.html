@@ -25,6 +25,7 @@
     {{#each drops}}
       <div class="drop">
         {{> dropFile}}
+        <img class="img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?center={{loc.coordinates.reverse}}&zoom=15&size=200x200&markers=|{{loc.coordinates}}">
         <p><code>({{loc.coordinates}})</code></p>
       </div>
     {{/each}}
