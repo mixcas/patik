@@ -1,1 +1,63 @@
 /* CSS declarations go here */
+body {
+  padding-top: 50px;
+}
+header {
+  background: #68787A;
+  text-align: center;
+  text-transform: uppercase;
+  color: #98E4D8;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 40px;
+}
+
+header h1 {
+  padding: 0;
+  margin: 0;
+}
+form.add-drop {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 3em;
+}
+
+form.add-drop:before {
+  color: #fff;
+  content: '+';
+  width: 100%;
+  height: 100%;
+  background: #DF5369;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: -1;
+  line-height: 3em;
+}
+
+form.add-drop input {
+  z-index: 1;
+  opacity: 0;
+}
+
+.drop {
+  text-align: center;
+  border: 1px solid #E6FFFA;
+  margin-bottom: 30px;
+  padding: 15px;
+  -webkit-box-shadow: 3px 3px 4px 0px rgba(104,120,122,1);
+  -moz-box-shadow: 3px 3px 4px 0px rgba(104,120,122,1);
+  box-shadow: 3px 3px 4px 0px rgba(104,120,122,1);
+  background: #E6FFFA;
+}
+
+.drop img {
+  margin: 0 auto;
+}
