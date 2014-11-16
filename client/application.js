@@ -75,7 +75,7 @@ Template.allDrops.helpers({
           }
         }
       }, {
-        limit: 5,
+        limit: 10,
       });
     }
    }
