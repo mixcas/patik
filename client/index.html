@@ -24,24 +24,18 @@
   <div class="drops-container">
     {{#each drops}}
       <div class="drop">
-        {{> dropFile}}
-        <img class="img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?center={{loc.coordinates.reverse}}&zoom=15&size=200x200&markers=|{{loc.coordinates}}">
-        <p><code>({{loc.coordinates}})</code></p>
+        {{#if isImage}}
+          <img class="img-responsive" src="{{this.url}}">
+        {{/if}}
+
+        {{#if isAudio isUploaded}}
+        <audio controls>
+          <source src="{{this.url}}">
+        </audio>
+        {{/if}}
+        <img class="img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?center={{metadata.loc.coordinates.reverse}}&zoom=15&size=200x200&markers=|{{metadata.loc.coordinates}}">
+        <p><code>({{metadata.loc.coordinates}})</code></p>
       </div>
     {{/each}}
   </div>
-</template>
-
-<template name="dropFile">
-  {{#with file}}
-    {{#if isImage}}
-      <img class="img-responsive" src="{{this.url}}">
-    {{/if}}
-
-    {{#if isAudio isUploaded}}
-    <audio controls>
-      <source src="{{this.url}}">
-    </audio>
-    {{/if}}
-  {{/with}}
 </template>

@@ -14,17 +14,17 @@ Template.newDrop.events({
     if( 0 != loc[0] && 0 != loc[1] ) {
       console.log('uploading');
       FS.Utility.eachFile(event, function(file) {
-        DropFiles.insert(file, function (err, fileObj) {
+        var newFile = new FS.File(file);
+        newFile.metadata = {
+          loc: {
+            type: "Point",
+            coordinates: loc
+          },
+          date: new Date()
+        };
+        Drops.insert(newFile, function (err, fileObj) {
           if(err) throw(err);
           console.log('success', fileObj);
-          Drops.insert({
-            loc: {
-              type: "Point",
-              coordinates: loc
-            },
-            file: fileObj._id,
-            date: new Date()
-          });
         });
       });
     } else {
@@ -40,7 +40,7 @@ Template.allDrops.helpers({
     if( 0 != loc[0] && 0 != loc[1] ) {
       navigator.geolocation.getCurrentPosition(saveLocation);
       return Drops.find({
-        loc: {
+        "metadata.loc": {
           $near: {
             $geometry: { type: "Point",  coordinates: Session.get('loc') }
           }
@@ -50,13 +50,6 @@ Template.allDrops.helpers({
       });
     }
    }
-});
-
-// Get each drop file
-Template.dropFile.helpers({
-  file: function() {
-    return DropFiles.findOne({_id: this.file});
-  }
 });
 
 /* Misc */

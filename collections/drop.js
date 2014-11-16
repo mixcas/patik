@@ -1,12 +1,8 @@
 // declare collections
 // this code should be included in both the client and the server
-Drops = new Mongo.Collection("drops");
-if(Meteor.isServer) {
-  Drops._ensureIndex( { loc : "2dsphere" } );
-};
 
-DropFiles = new FS.Collection("dropFiles", {
-  stores: [new FS.Store.GridFS("dropFiles")],
+Drops = new FS.Collection("drops", {
+  stores: [new FS.Store.GridFS("drops")],
   filter: {
     maxSize: 5242880,
     allow: {
@@ -21,5 +17,8 @@ DropFiles = new FS.Collection("dropFiles", {
     }
   }
 });
+if(Meteor.isServer) {
+  Drops.files._ensureIndex( { "metadata.loc" : "2dsphere" } );
+};
 
 // server: populate collections with some initial documents
