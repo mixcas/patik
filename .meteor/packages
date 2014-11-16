@@ -9,7 +9,5 @@ insecure
 altapp:recaptcha
 cfs:standard-packages
 cfs:gridfs
-cfs:ui
 cfs:ejson-file
 mizzao:bootstrap-3
-
