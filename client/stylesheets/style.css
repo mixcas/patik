@@ -7,7 +7,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 1;
   width: 100%;
   height: 40px;
 }
@@ -15,35 +15,6 @@ header {
 header h1 {
   padding: 0;
   margin: 0;
-}
-form.add-drop {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  cursor: pointer;
-  width: 100%;
-  height: 3em;
-}
-
-form.add-drop:before {
-  color: #fff;
-  content: '+';
-  width: 100%;
-  height: 100%;
-  background: #DF5369;
-  position: absolute;
-  top: 0;
-  left: 0;
-  text-align: center;
-  z-index: -1;
-  line-height: 3em;
-}
-
-form.add-drop input {
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0;
 }
 
 .drops-container {
@@ -64,4 +35,87 @@ form.add-drop input {
 
 .drop img {
   margin: 0 auto;
+}
+
+#addDrop {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 39px;
+  background: #DF5369;
+  font-size: 20px;
+  font-weight: bold;
+  color: #E6FFFA;
+  border: none;
+}
+
+.newDrop {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100%;
+  background: white;
+  z-index: 2;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: all 300ms;
+}
+
+.newDrop.active {
+  top: 0;
+}
+
+.newDrop form {
+  max-width: 700px;
+  margin: 0 auto;
+  width: 95%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.newDrop .dropFileInput {
+  width: 100%;
+  height: 100%;
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: 20px auto;
+  border: 5px dashed rgba(104, 120, 122, 0.5);
+  overflow: hidden;
+  text-indent: -9999px;
+  color: rgba(255, 255, 255, 0);
+  position: relative;
+}
+
+.dropFileInput:after {
+  content: "add photo or mp3";
+  color: black;
+  display: block;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  z-index: 2;
+  text-indent: 0;
+  text-align: center;
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  padding: 60px;
+}
+
+button.closeNewDrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  background: #DF5369;
+  border: none;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  color: white;
 }

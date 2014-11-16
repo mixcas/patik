@@ -8,16 +8,23 @@
     <h1>Patik</h1>
   </header>
   <div class="container">
-
-    {{> newDrop}}
     {{> allDrops}}
   </div>
+    {{ > addDrop}}
+    {{> newDrop}}
 </body>
 
+<template name="addDrop">
+  <button id="addDrop">+</button>
+</template>
+
 <template name="newDrop">
-  <form role="form" class="add-drop">
-    <input class="myFileInput" type="file" accept="image/*, audio/*" capture="camera">
-  </form>
+  <div class="newDrop">
+    <form role="form">
+      <input class="dropFileInput" type="file" accept="image/*, audio/*" capture="camera">
+    </form>
+    <button class="closeNewDrop">&#9587;</button>
+  </div>
 </template>
 
 <template name="allDrops">
@@ -35,6 +42,9 @@
         {{/if}}
         <img class="img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?center={{metadata.loc.coordinates.reverse}}&zoom=15&size=200x200&markers=|{{metadata.loc.coordinates}}">
         <p><code>({{metadata.loc.coordinates}})</code></p>
+        {{#unless this.isUploaded}}
+          <marquee>LOADING</marquee>
+        {{/unless}}
       </div>
     {{/each}}
   </div>
