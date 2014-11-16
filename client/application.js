@@ -32,15 +32,32 @@ Template.newDrop.events({
         Drops.insert(newFile, function (err, fileObj) {
           if(err) throw(err);
           console.log('success', fileObj);
+          $('.dropFileInput').fadeOut();
+          $('.newDrop form').prepend('<p class="check">Drop is done &#10004;</p>');
+          $('.dropCaptionInput').data('drop', fileObj._id);
         });
       });
     } else {
       alert("Plz, allow us to know your location");
     }
   },
-
-  'click .closeNewDrop': function() {
+  'click .submitCaption': function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    var fileID = $('.dropCaptionInput').data('drop'),
+      caption = $('.dropCaptionInput').val();
+    Drops.update({ _id: fileID }, { $set: {'metadata.caption': caption} } );
     $('.newDrop').toggleClass('active');
+    $('.dropFileInput').fadeIn();
+    $('.check').remove();
+  },
+  'click .closeNewDrop': function() {
+    var fileID = $('.dropCaptionInput').data('drop');
+    Drops.remove({ _id: fileID } );
+    $('.newDrop').toggleClass('active');
+    $('.check').remove();
+    $('.dropCaptionInput').val('').data('drop','');
+    $('.dropFileInput').fadeIn();
   }
 
 });

@@ -22,6 +22,8 @@
   <div class="newDrop">
     <form role="form">
       <input class="dropFileInput" type="file" accept="image/*, audio/*" capture="camera">
+      <input class="dropCaptionInput" type="text" placeholder="Caption (optional)" maxlenght="250">
+      <input class="submitCaption" type="submit" value="→">
     </form>
     <button class="closeNewDrop">&#9587;</button>
   </div>
@@ -40,11 +42,14 @@
           <source src="{{this.url}}">
         </audio>
         {{/if}}
-        <img class="img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?center={{metadata.loc.coordinates.reverse}}&zoom=15&size=200x200&markers=|{{metadata.loc.coordinates}}">
-        <p><code>({{metadata.loc.coordinates}})</code></p>
+        
         {{#unless this.isUploaded}}
-          <marquee>LOADING</marquee>
+          <marquee>UPLOADING</marquee>
         {{/unless}}
+
+        {{#if metadata.caption }}
+          <p class="dropCaption">{{metadata.caption}}</p>
+        {{/if}}
       </div>
     {{/each}}
   </div>
