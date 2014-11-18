@@ -1,18 +1,20 @@
-<head>
-  <title>patik</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+<template name="Layout">
+  <head>
+    <title>patik</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 
-<body>
-  <header>
-    <h1>Patik</h1>
-  </header>
-  <div class="container">
-    {{> allDrops}}
-  </div>
-    {{ > addDrop}}
-    {{> newDrop}}
-</body>
+  <body>
+    <header>
+      <h1>Patik</h1>
+    </header>
+    <div class="container">
+      {{> yield}}
+    </div>
+      {{ > addDrop}}
+      {{> newDrop}}
+  </body>
+</template>
 
 <template name="addDrop">
   <button id="addDrop">+</button>

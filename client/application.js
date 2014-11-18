@@ -64,7 +64,7 @@ Template.allDrops.helpers({
         limit: 10,
       });
     }
-   }
+  }
 });
 
 /* Misc */
