@@ -11,3 +11,6 @@ cfs:standard-packages
 cfs:gridfs
 cfs:ejson-file
 mizzao:bootstrap-3
+iron:router
+houston:admin
+
